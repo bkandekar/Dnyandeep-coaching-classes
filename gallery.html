@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Campus Infrastructure & Event Gallery | Dnyandeep Coaching Classes</title>
+    <meta name="title" content="Campus Infrastructure & Event Gallery | Dnyandeep Coaching Classes">
+    <meta name="description" content="Take a virtual tour of Dnyandeep Coaching Classes, Savarde. Explore classrooms, reference libraries, study spaces, events, and toppers felicitations.">
+    <meta name="keywords" content="Coaching gallery Savarde, smart classrooms Kolhapur, competitive study spaces Hatkanangale, Dnyandeep campus photo">
+    <meta name="author" content="Dnyandeep Coaching Classes">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dnyandeepclasses.com/gallery.html">
+    <meta property="og:title" content="Campus Gallery | Dnyandeep Coaching Classes">
+    <meta property="og:description" content="Explore classrooms, events, and reading spaces at Dnyandeep Coaching Classes, Savarde. Live the scholarly vibe.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dnyandeepclasses.com/gallery.html">
+    <meta property="twitter:title" content="Gallery Board | Dnyandeep Coaching Classes">
+    <meta property="twitter:description" content="Check our classrooms and events in Savarde. Admissions open.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Fonts and Icons CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        /* Gallery Custom Styling */
+        .gallery-section {
+            padding: 80px 0 100px;
+            background-color: var(--bg-white);
+        }
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px auto 50px;
+        }
+        .gallery-tab {
+            padding: 12px 24px;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            border: 1px solid rgba(10, 26, 71, 0.08);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .gallery-tab.active, .gallery-tab:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            box-shadow: var(--card-shadow);
+        }
+        .gallery-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .gallery-item-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(10,26,71,0.05);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .gallery-item-card.hidden {
+            display: none !important;
+        }
+        .gallery-item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+        .gallery-item-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        .gallery-item-card:hover .gallery-item-img img {
+            transform: scale(1.08);
+        }
+        .gallery-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 38, 71, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+        .gallery-item-card:hover .gallery-img-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .gallery-item-info {
+            padding: 20px;
+        }
+        .gallery-item-info h4 {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .gallery-item-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Lightbox CSS Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 26, 71, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            color: var(--bg-white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 10000;
+        }
+        .lightbox-close:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--bg-white);
+            object-fit: contain;
+        }
+        .lightbox-caption {
+            color: var(--bg-white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--bg-white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 10001;
+        }
+        .lightbox-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-color: var(--accent-color);
+        }
+        .lightbox-prev {
+            left: 30px;
+        }
+        .lightbox-next {
+            right: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .gallery-grid-full {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .lightbox-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" aria-hidden="true">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Announcement Bar / Dismissible Banner -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container announcement-container">
+            <div class="announcement-info">
+                <span><i class="fa-solid fa-phone"></i> Admissions Open 2026-27</span>
+                <span><i class="fa-solid fa-location-dot"></i> Savarde, Hatkanangale, Kolhapur</span>
+            </div>
+            <div class="announcement-banner">
+                <i class="fa-solid fa-bullhorn"></i> New Batches Starting This Week!
+            </div>
+            <div class="announcement-close" id="closeAnnouncement" aria-label="Dismiss banner">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper" aria-label="Dnyandeep Coaching Home">
+                <div class="logo-icon" aria-hidden="true">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Dnyandeep</h1>
+                    <p>Coaching Classes</p>
+                </div>
+            </a>
+            
+            <nav id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="faculty.html" class="nav-link">Faculty</a>
+                <a href="results.html" class="nav-link">Results</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="testimonials.html" class="nav-link">Testimonials</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Header -->
+    <section class="page-header" aria-labelledby="gallery-heading">
+        <div class="container">
+            <h1 id="gallery-heading">Campus & Infrastructure Gallery</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Gallery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Campus Tour</span>
+                <h2 class="section-title">Peek Inside <span>Our Institute</span></h2>
+                <p class="section-subtitle">We believe spaces influence attention. Peek into our world of smart, safe, and silent studying systems.</p>
+            </div>
+
+            <!-- Gallery Category Tabs -->
+            <div class="gallery-filters reveal">
+                <button class="gallery-tab active" data-filter="all">All Photos</button>
+                <button class="gallery-tab" data-filter="classroom">Classroom Sessions</button>
+                <button class="gallery-tab" data-filter="events">Events & Felicitations</button>
+                <button class="gallery-tab" data-filter="study">Study Material</button>
+                <button class="gallery-tab" data-filter="infra">Infrastructure</button>
+                <button class="gallery-tab" data-filter="activities">Student Activities</button>
+            </div>
+
+            <!-- Responsive Images Grid -->
+            <div class="gallery-grid-full" id="galleryGrid">
+                
+                <!-- Image 1 (Classroom Sessions) -->
+                <div class="gallery-item-card reveal" data-category="classroom">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Interactive+Maths+Lecture" alt="Interactive Mathematics Lecture Session">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Conceptual Maths Lectures</h4>
+                        <p>Patil Sir breaking down complex geometrical and calculus formulas using simple visual charts.</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 (Classroom Sessions) -->
+                <div class="gallery-item-card reveal" data-category="classroom">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Interactive+Science+Session" alt="Interactive Science Lecture Session">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Microscopic Biology Studies</h4>
+                        <p>A smart projector diagram-based science batch showing human anatomy structures interactively.</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 (Events) -->
+                <div class="gallery-item-card reveal" data-category="events">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=SSC+Board+Toppers+Felicitation" alt="SSC Board Toppers Felicitation Ceremony">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>SSC Board Toppers felicitation</h4>
+                        <p>Celebrating the incredible achievements of board distinction score holders with trophies and certificates.</p>
+                    </div>
+                </div>
+
+                <!-- Image 4 (Events) -->
+                <div class="gallery-item-card reveal" data-category="events">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Independence+Day+Student+Gathering" alt="Independence Day Celebration Gathering">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>National Independence Day</h4>
+                        <p>Flag hoisting ceremony and motivational address by senior government advisors at our main campus.</p>
+                    </div>
+                </div>
+
+                <!-- Image 5 (Study Material) -->
+                <div class="gallery-item-card reveal" data-category="study">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Short-cut+Formula+Sheets" alt="Coaching Quick Formula Cards and Revision Booklets">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Short-cut Revision booklets</h4>
+                        <p>Custom-printed, simplified math short-cut indices and science formula sheets distributed in our batches.</p>
+                    </div>
+                </div>
+
+                <!-- Image 6 (Study Material) -->
+                <div class="gallery-item-card reveal" data-category="study">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Government+Exam+Mock+Materials" alt="SSC CGL and Banking Exam Practice Study Packs">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Banking Practice Study Packs</h4>
+                        <p>In-house designed question sets matching the exact current IBPS and SSC CGL syllabus parameters.</p>
+                    </div>
+                </div>
+
+                <!-- Image 7 (Infrastructure) -->
+                <div class="gallery-item-card reveal" data-category="infra">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Acoustic+Lecture+Theatre" alt="Modern Air-Cooled Smart Lecture Theatre">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Acoustic Lecture Theatre</h4>
+                        <p>Fully air-cooled learning spaces integrated with high-contrast screen systems for audio-visual lecturing.</p>
+                    </div>
+                </div>
+
+                <!-- Image 8 (Infrastructure) -->
+                <div class="gallery-item-card reveal" data-category="infra">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Silent+Abhyasika+Reading+Hall" alt="Completely Silent Student Study Abhyasika">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Private Study Abhyasika</h4>
+                        <p>A completely silent, distraction-free reading zone dedicated for self-study, open daily from 8 AM to 8 PM.</p>
+                    </div>
+                </div>
+
+                <!-- Image 9 (Infrastructure) -->
+                <div class="gallery-item-card reveal" data-category="infra">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Well-stocked+Reference+Library" alt="Reference Library Book Racks">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Academic Reference Library</h4>
+                        <p>Stocked with NCERT guides, Board question banks, competitive digests, and scholarship references.</p>
+                    </div>
+                </div>
+
+                <!-- Image 10 (Student Activities) -->
+                <div class="gallery-item-card reveal" data-category="activities">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Weekly+Sunday+Mock+Exam" alt="Strict Mock Examination Hall Environment">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Sunday Mock Exam Sessions</h4>
+                        <p>Students practicing under strict, timer-supervised test-room environments for fear mitigation.</p>
+                    </div>
+                </div>
+
+                <!-- Image 11 (Student Activities) -->
+                <div class="gallery-item-card reveal" data-category="activities">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Student+Peer+Discussion+Group" alt="Supervised Student Doubt Clearing Group Discussion">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Supervised Doubt Circles</h4>
+                        <p>Small, round-table discussion groups where peers solve challenging problem statements under teacher supervision.</p>
+                    </div>
+                </div>
+
+                <!-- Image 12 (Student Activities) -->
+                <div class="gallery-item-card reveal" data-category="activities">
+                    <div class="gallery-item-img">
+                        <img src="https://placehold.co/800x600/0A2647/FFFFFF?text=Career+Counseling+Seminars" alt="Parent and Student Career Counseling Seminar">
+                        <div class="gallery-img-overlay">
+                            <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4>Parent Counselor Seminars</h4>
+                        <p>Bi-monthly seminar workshops providing strategic board selection guidance and career counseling advice.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Hand-Crafted Lightbox Overlay -->
+    <div id="customLightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image view modal">
+        <span class="lightbox-close" id="lightboxClose" aria-label="Close modal">&times;</span>
+        <button class="lightbox-btn lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Next image">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-wrapper" style="margin-bottom: 20px;">
+                    <div class="logo-icon" style="background-color: var(--accent-color); color: var(--primary-color);">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text" style="color: white;">
+                        <h1 style="color: white;">Dnyandeep</h1>
+                        <p style="color: #94A3B8;">Coaching Classes</p>
+                    </div>
+                </a>
+                <p>Establishing landmarks in conceptual education since 12+ years. We offer strategic school board mentoring, foundation courses, and elite government competitive exam frameworks in Savarde, Kolhapur.</p>
+                <div class="footer-socials">
+                    <a href="https://wa.me/918329931123" target="_blank" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                    <li><a href="faculty.html">Meet Faculty</a></li>
+                    <li><a href="results.html">Toppers Board</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Major Courses</h4>
+                <ul class="footer-links">
+                    <li><a href="courses.html">Class 10 Foundation</a></li>
+                    <li><a href="courses.html">SSC CGL / CHSL Prep</a></li>
+                    <li><a href="courses.html">Banking & IBPS Exams</a></li>
+                    <li><a href="courses.html">NEET Foundation Course</a></li>
+                    <li><a href="courses.html">JEE Foundation Course</a></li>
+                    <li><a href="courses.html">Class 8-9 School Edge</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Contact Us</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Near Laxmi Biroba Mandir, Savarde, Tal. Hatkanangale, Dist. Kolhapur, Pincode 416109, Maharashtra</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 83299 31123</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>info@dnyandeepclasses.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dnyandeep Coaching Classes. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="faq.html">FAQ Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Sticky Actions -->
+    <div class="floating-actions" aria-label="Floating contact buttons">
+        <a href="https://wa.me/918329931123?text=Hi,%20I%20want%20to%20know%20more%20about%20admission%20at%20Dnyandeep%20Coaching%20Classes" target="_blank" class="float-btn float-whatsapp" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918329931123" class="float-btn float-call" aria-label="Call Institute">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <button class="float-btn float-totop" id="btnToTop" aria-label="Scroll back to top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Specific Lightbox & Filtering Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterTabs = document.querySelectorAll('.gallery-tab');
+            const galleryItems = document.querySelectorAll('.gallery-item-card');
+
+            // Lightbox Elements
+            const lightbox = document.getElementById('customLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+
+            let currentFilter = 'all';
+            let activeFilteredImages = [];
+            let currentLightboxIndex = 0;
+
+            // Update list of images matching current filter
+            const updateFilteredList = () => {
+                activeFilteredImages = [];
+                galleryItems.forEach(item => {
+                    if (!item.classList.contains('hidden')) {
+                        const img = item.querySelector('.gallery-item-img img');
+                        const h4 = item.querySelector('.gallery-item-info h4');
+                        activeFilteredImages.push({
+                            src: img.getAttribute('src'),
+                            alt: img.getAttribute('alt'),
+                            caption: h4.textContent
+                        });
+                    }
+                });
+            };
+
+            // 1. Tab Filtering Engine
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    currentFilter = tab.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (currentFilter === 'all' || itemCategory === currentFilter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+
+                    updateFilteredList();
+                });
+            });
+
+            // Initialise list
+            updateFilteredList();
+
+            // 2. Lightbox Engine
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgElement = item.querySelector('.gallery-item-img img');
+                    const targetSrc = imgElement.getAttribute('src');
+
+                    // Find index of clicked image within the filtered list
+                    currentLightboxIndex = activeFilteredImages.findIndex(imgObj => imgObj.src === targetSrc);
+
+                    if (currentLightboxIndex !== -1) {
+                        openLightbox();
+                    }
+                });
+            });
+
+            const openLightbox = () => {
+                lightbox.style.display = 'flex';
+                // Trigger reflow for transition
+                lightbox.offsetHeight;
+                lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
+                updateLightboxImage();
+                document.body.style.overflow = 'hidden'; // Lock scrolling
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                lightbox.setAttribute('aria-hidden', 'true');
+                setTimeout(() => {
+                    lightbox.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = ''; // Unlock scrolling
+            };
+
+            const updateLightboxImage = () => {
+                const currentData = activeFilteredImages[currentLightboxIndex];
+                if (currentData) {
+                    lightboxImg.setAttribute('src', currentData.src);
+                    lightboxImg.setAttribute('alt', currentData.alt);
+                    lightboxCaption.textContent = currentData.caption;
+                }
+            };
+
+            const navigateLightbox = (direction) => {
+                if (activeFilteredImages.length === 0) return;
+
+                if (direction === 'next') {
+                    currentLightboxIndex = (currentLightboxIndex + 1) % activeFilteredImages.length;
+                } else if (direction === 'prev') {
+                    currentLightboxIndex = (currentLightboxIndex - 1 + activeFilteredImages.length) % activeFilteredImages.length;
+                }
+                updateLightboxImage();
+            };
+
+            // Event Listeners for Lightbox Controls
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
+            lightboxNext.addEventListener('click', () => navigateLightbox('next'));
+
+            // Click outside content area to close
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation support
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox('next');
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox('prev');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
