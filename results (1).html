@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Toppers, Achievements & Results | Dnyandeep Coaching Classes</title>
+    <meta name="title" content="Toppers, Achievements & Results | Dnyandeep Coaching Classes">
+    <meta name="description" content="Explore our stellar academic performance record at Dnyandeep Coaching Classes, Savarde. View last 3 years of SSC, Banking, and SSC CGL toppers and success stories.">
+    <meta name="keywords" content="Dnyandeep Coaching Classes results, board toppers Savarde, SSC CGL selections Hatkanangale, Banking exam success Kolhapur">
+    <meta name="author" content="Dnyandeep Coaching Classes">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dnyandeepclasses.com/results.html">
+    <meta property="og:title" content="Toppers & Results Board | Dnyandeep Coaching Classes">
+    <meta property="og:description" content="View our historical academic board toppers and competitive government job selections at Dnyandeep Coaching Classes, Savarde. Our records speak for our teaching quality.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dnyandeepclasses.com/results.html">
+    <meta property="twitter:title" content="Academic Achievements | Dnyandeep Coaching Classes">
+    <meta property="twitter:description" content="Expert guidance and proven result stats for board and competitive exams in Savarde, Kolhapur.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Fonts and Icons CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        /* Results Page Custom Styling */
+        .stats-bar-section {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            padding: 60px 0;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        .stats-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-card-large h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .stat-card-large p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .filters-container {
+            margin: 40px auto 50px;
+            text-align: center;
+        }
+        .filter-tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .filter-tab {
+            padding: 12px 24px;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            border: 1px solid rgba(10, 26, 71, 0.1);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .filter-tab.active, .filter-tab:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            box-shadow: var(--card-shadow);
+        }
+        .year-selector-wrapper {
+            display: inline-flex;
+            background-color: var(--bg-light);
+            border-radius: 30px;
+            padding: 6px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(10, 26, 71, 0.05);
+        }
+        .year-btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .year-btn.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.2);
+        }
+        .results-toppers-section {
+            padding: 80px 0;
+            background-color: var(--bg-white);
+        }
+        .topper-card {
+            display: block;
+            transition: var(--transition-smooth);
+        }
+        /* Hidden topper elements for filtering */
+        .topper-card.hidden {
+            display: none !important;
+        }
+        .success-stories-section {
+            background-color: var(--bg-light);
+            padding: 100px 0;
+        }
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .story-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(10, 26, 71, 0.05);
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .story-card::before {
+            content: "“";
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+        .story-content {
+            font-size: 1rem;
+            font-style: italic;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .story-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-top: 1px solid var(--bg-offset);
+            padding-top: 20px;
+        }
+        .story-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+        }
+        .story-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .story-info h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+        .story-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        @media (max-width: 992px) {
+            .stats-bar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .stats-bar-grid {
+                grid-template-columns: 1fr;
+            }
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" aria-hidden="true">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Announcement Bar / Dismissible Banner -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container announcement-container">
+            <div class="announcement-info">
+                <span><i class="fa-solid fa-phone"></i> Admissions Open 2026-27</span>
+                <span><i class="fa-solid fa-location-dot"></i> Savarde, Hatkanangale, Kolhapur</span>
+            </div>
+            <div class="announcement-banner">
+                <i class="fa-solid fa-bullhorn"></i> New Batches Starting This Week!
+            </div>
+            <div class="announcement-close" id="closeAnnouncement" aria-label="Dismiss banner">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper" aria-label="Dnyandeep Coaching Home">
+                <div class="logo-icon" aria-hidden="true">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Dnyandeep</h1>
+                    <p>Coaching Classes</p>
+                </div>
+            </a>
+            
+            <nav id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="faculty.html" class="nav-link">Faculty</a>
+                <a href="results.html" class="nav-link active">Results</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="testimonials.html" class="nav-link">Testimonials</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Header -->
+    <section class="page-header" aria-labelledby="results-heading">
+        <div class="container">
+            <h1 id="results-heading">Toppers & Achievements Board</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Results</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overall Statistics with Animated Counters -->
+    <section class="stats-bar-section">
+        <div class="container">
+            <div class="stats-bar-grid">
+                <div class="stat-card-large">
+                    <h3 class="stat-number" data-target="98%">0%</h3>
+                    <p>Overall Pass Rate</p>
+                </div>
+                <div class="stat-card-large">
+                    <h3 class="stat-number" data-target="320+">0</h3>
+                    <p>Distinction Holders</p>
+                </div>
+                <div class="stat-card-large">
+                    <h3 class="stat-number" data-target="45+">0</h3>
+                    <p>Merit Rank Holders</p>
+                </div>
+                <div class="stat-card-large">
+                    <h3 class="stat-number" data-target="150+">0</h3>
+                    <p>Govt Exam Selections</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Overview & Interactive Toppers Wall -->
+    <section class="results-toppers-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Hall of Fame</span>
+                <h2 class="section-title">Celebrating <span>Consistent Academic Triumph</span></h2>
+                <p class="section-subtitle">Our results are the direct outcome of customized mentoring frameworks, exhaustive study materials, and rigorous Sunday mocks.</p>
+            </div>
+
+            <!-- Double Filter Block: Years & Categories -->
+            <div class="filters-container reveal">
+                <!-- Year Selectors (Last 3 Years) -->
+                <div>
+                    <span style="font-weight: 700; color: var(--primary-color); margin-right: 15px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Select Year:</span>
+                    <div class="year-selector-wrapper">
+                        <button class="year-btn active" data-year="2025">2025</button>
+                        <button class="year-btn" data-year="2024">2024</button>
+                        <button class="year-btn" data-year="2023">2023</button>
+                    </div>
+                </div>
+
+                <!-- Course Category Selectors -->
+                <div class="filter-tabs-wrapper">
+                    <button class="filter-tab active" data-filter="all">All Programs</button>
+                    <button class="filter-tab" data-filter="class10">Class 10 Board</button>
+                    <button class="filter-tab" data-filter="banking">Banking & IBPS</button>
+                    <button class="filter-tab" data-filter="ssc">SSC CGL / Govt</button>
+                    <button class="filter-tab" data-filter="neet-jee">NEET & JEE Foundation</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Toppers Grid -->
+            <div class="toppers-grid" id="toppersGridContainer">
+                
+                <!-- === YEAR 2025 === -->
+                <!-- Topper 1 (2025 Class 10) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="class10">
+                    <span class="topper-badge-score">98.40%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Sneha Patil">
+                    </div>
+                    <h4 class="topper-name">Sneha Patil</h4>
+                    <div class="topper-score">98.40%</div>
+                    <p class="topper-course">Mathematics: 100/100</p>
+                </div>
+
+                <!-- Topper 2 (2025 Class 10) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="class10">
+                    <span class="topper-badge-score">97.60%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Amit Patil">
+                    </div>
+                    <h4 class="topper-name">Amit Patil</h4>
+                    <div class="topper-score">97.60%</div>
+                    <p class="topper-course">Science: 99/100</p>
+                </div>
+
+                <!-- Topper 3 (2025 Class 10) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="class10">
+                    <span class="topper-badge-score">96.80%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Priya Shinde">
+                    </div>
+                    <h4 class="topper-name">Priya Shinde</h4>
+                    <div class="topper-score">96.80%</div>
+                    <p class="topper-course">Social Science: 98/100</p>
+                </div>
+
+                <!-- Topper 4 (2025 SSC CGL) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="ssc">
+                    <span class="topper-badge-score">SSC CGL</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" alt="Aditya Kore">
+                    </div>
+                    <h4 class="topper-name">Aditya Kore</h4>
+                    <div class="topper-score">Excise Inspector</div>
+                    <p class="topper-course">Cleared in 1st Attempt</p>
+                </div>
+
+                <!-- Topper 5 (2025 Banking) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="banking">
+                    <span class="topper-badge-score">SBI PO</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" alt="Pranav Mane">
+                    </div>
+                    <h4 class="topper-name">Pranav Mane</h4>
+                    <div class="topper-score">Probationary Officer</div>
+                    <p class="topper-course">Banking Program Scholar</p>
+                </div>
+
+                <!-- Topper 6 (2025 Banking) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="banking">
+                    <span class="topper-badge-score">IBPS Clerk</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" alt="Sayali Kamble">
+                    </div>
+                    <h4 class="topper-name">Sayali Kamble</h4>
+                    <div class="topper-score">Selected in BOI</div>
+                    <p class="topper-course">Fast-Track Batch</p>
+                </div>
+
+                <!-- Topper 7 (2025 NEET/JEE) -->
+                <div class="topper-card reveal" data-year="2025" data-cat="neet-jee">
+                    <span class="topper-badge-score">NEET Fnd</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=150&auto=format&fit=crop" alt="Rutuja Deshmukh">
+                    </div>
+                    <h4 class="topper-name">Rutuja Deshmukh</h4>
+                    <div class="topper-score">Olympiad Ranker</div>
+                    <p class="topper-course">NEET Foundation Course</p>
+                </div>
+
+
+                <!-- === YEAR 2024 === -->
+                <!-- Topper 8 (2024 Class 10) -->
+                <div class="topper-card reveal hidden" data-year="2024" data-cat="class10">
+                    <span class="topper-badge-score">97.20%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=150&auto=format&fit=crop" alt="Rahul Deshmukh">
+                    </div>
+                    <h4 class="topper-name">Rahul Deshmukh</h4>
+                    <div class="topper-score">97.20%</div>
+                    <p class="topper-course">Science: 100/100</p>
+                </div>
+
+                <!-- Topper 9 (2024 Class 10) -->
+                <div class="topper-card reveal hidden" data-year="2024" data-cat="class10">
+                    <span class="topper-badge-score">96.50%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop" alt="Swati Shinde">
+                    </div>
+                    <h4 class="topper-name">Swati Shinde</h4>
+                    <div class="topper-score">96.50%</div>
+                    <p class="topper-course">SST: 99/100</p>
+                </div>
+
+                <!-- Topper 10 (2024 Banking) -->
+                <div class="topper-card reveal hidden" data-year="2024" data-cat="banking">
+                    <span class="topper-badge-score">IBPS PO</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=150&auto=format&fit=crop" alt="Nilesh Kamble">
+                    </div>
+                    <h4 class="topper-name">Nilesh Kamble</h4>
+                    <div class="topper-score">Selected in PNB</div>
+                    <p class="topper-course">Banking Program Scholar</p>
+                </div>
+
+                <!-- Topper 11 (2024 SSC) -->
+                <div class="topper-card reveal hidden" data-year="2024" data-cat="ssc">
+                    <span class="topper-badge-score">SSC CHSL</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=150&auto=format&fit=crop" alt="Pooja Mane">
+                    </div>
+                    <h4 class="topper-name">Pooja Mane</h4>
+                    <div class="topper-score">Data Entry Operator</div>
+                    <p class="topper-course">Govt Preparatory Batch</p>
+                </div>
+
+                <!-- Topper 12 (2024 NEET/JEE) -->
+                <div class="topper-card reveal hidden" data-year="2024" data-cat="neet-jee">
+                    <span class="topper-badge-score">JEE Fnd</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1489980508314-941910ded1f4?q=80&w=150&auto=format&fit=crop" alt="Vikram Sawant">
+                    </div>
+                    <h4 class="topper-name">Vikram Sawant</h4>
+                    <div class="topper-score">99.1 Percentile</div>
+                    <p class="topper-course">JEE Foundation Program</p>
+                </div>
+
+
+                <!-- === YEAR 2023 === -->
+                <!-- Topper 13 (2023 Class 10) -->
+                <div class="topper-card reveal hidden" data-year="2023" data-cat="class10">
+                    <span class="topper-badge-score">96.80%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=150&auto=format&fit=crop" alt="Rohit Patil">
+                    </div>
+                    <h4 class="topper-name">Rohit Patil</h4>
+                    <div class="topper-score">96.80%</div>
+                    <p class="topper-course">Maths: 99/100</p>
+                </div>
+
+                <!-- Topper 14 (2023 Class 10) -->
+                <div class="topper-card reveal hidden" data-year="2023" data-cat="class10">
+                    <span class="topper-badge-score">95.40%</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop" alt="Shantanu Joshi">
+                    </div>
+                    <h4 class="topper-name">Shantanu Joshi</h4>
+                    <div class="topper-score">95.40%</div>
+                    <p class="topper-course">English: 98/100</p>
+                </div>
+
+                <!-- Topper 15 (2023 SSC CGL) -->
+                <div class="topper-card reveal hidden" data-year="2023" data-cat="ssc">
+                    <span class="topper-badge-score">SSC CGL</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=150&auto=format&fit=crop" alt="Sandesh Kamble">
+                    </div>
+                    <h4 class="topper-name">Sandesh Kamble</h4>
+                    <div class="topper-score">Tax Assistant</div>
+                    <p class="topper-course">CGL Super 30 Program</p>
+                </div>
+
+                <!-- Topper 16 (2023 Banking) -->
+                <div class="topper-card reveal hidden" data-year="2023" data-cat="banking">
+                    <span class="topper-badge-score">IBPS RRB</span>
+                    <div class="topper-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=150&auto=format&fit=crop" alt="Deepa Shinde">
+                    </div>
+                    <h4 class="topper-name">Deepa Shinde</h4>
+                    <div class="topper-score">Office Assistant</div>
+                    <p class="topper-course">Banking Regular Batch</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Short Quotes Section -->
+    <section class="success-stories-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Alumni Speak</span>
+                <h2 class="section-title">Success <span>Stories</span></h2>
+                <p class="section-subtitle">Real feedback from students who transformed their dedication into benchmark achievements with us.</p>
+            </div>
+
+            <div class="stories-grid">
+                <!-- Story Card 1 -->
+                <div class="story-card reveal">
+                    <p class="story-content">"The weekly test schedules at Dnyandeep classes literally changed the trajectory of my prep. Dr. Deshmukh's micro-feedback on my biology papers kept me perfectly focused. I owe my board rank to this academy!"</p>
+                    <div class="story-meta">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Sneha Patil">
+                        </div>
+                        <div class="story-info">
+                            <h4>Sneha Patil</h4>
+                            <p>SSC 2025 Board Topper (98.40%)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Card 2 -->
+                <div class="story-card reveal">
+                    <p class="story-content">"The short-cut techniques taught in the banking batch are phenomenal. Shinde sir made complex reasoning look effortless, saving me crucial minutes in IBPS. Selected SBI PO in my very first attempt."</p>
+                    <div class="story-meta">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" alt="Pranav Mane">
+                        </div>
+                        <div class="story-info">
+                            <h4>Pranav Mane</h4>
+                            <p>SBI Probationary Officer (2025)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Card 3 -->
+                <div class="story-card reveal">
+                    <p class="story-content">"Unbelievable conceptual delivery from the faculty group. Patil Sir would spend extra hours at the discussion tables clearing even minor doubts. The Abhyasika quiet room was my second home!"</p>
+                    <div class="story-meta">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" alt="Aditya Kore">
+                        </div>
+                        <div class="story-info">
+                            <h4>Aditya Kore</h4>
+                            <p>Excise Inspector - SSC CGL (2025)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-wrapper" style="margin-bottom: 20px;">
+                    <div class="logo-icon" style="background-color: var(--accent-color); color: var(--primary-color);">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text" style="color: white;">
+                        <h1 style="color: white;">Dnyandeep</h1>
+                        <p style="color: #94A3B8;">Coaching Classes</p>
+                    </div>
+                </a>
+                <p>Establishing landmarks in conceptual education since 12+ years. We offer strategic school board mentoring, foundation courses, and elite government competitive exam frameworks in Savarde, Kolhapur.</p>
+                <div class="footer-socials">
+                    <a href="https://wa.me/918329931123" target="_blank" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                    <li><a href="faculty.html">Meet Faculty</a></li>
+                    <li><a href="results.html">Toppers Board</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Major Courses</h4>
+                <ul class="footer-links">
+                    <li><a href="courses.html">Class 10 Foundation</a></li>
+                    <li><a href="courses.html">SSC CGL / CHSL Prep</a></li>
+                    <li><a href="courses.html">Banking & IBPS Exams</a></li>
+                    <li><a href="courses.html">NEET Foundation Course</a></li>
+                    <li><a href="courses.html">JEE Foundation Course</a></li>
+                    <li><a href="courses.html">Class 8-9 School Edge</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Contact Us</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Near Laxmi Biroba Mandir, Savarde, Tal. Hatkanangale, Dist. Kolhapur, Pincode 416109, Maharashtra</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 83299 31123</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>info@dnyandeepclasses.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dnyandeep Coaching Classes. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="faq.html">FAQ Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Sticky Actions -->
+    <div class="floating-actions" aria-label="Floating contact buttons">
+        <a href="https://wa.me/918329931123?text=Hi,%20I%20want%20to%20know%20more%20about%20admission%20at%20Dnyandeep%20Coaching%20Classes" target="_blank" class="float-btn float-whatsapp" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918329931123" class="float-btn float-call" aria-label="Call Institute">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <button class="float-btn float-totop" id="btnToTop" aria-label="Scroll back to top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Page Specific Script for Double Tab Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearBtns = document.querySelectorAll('.year-btn');
+            const categoryTabs = document.querySelectorAll('.filter-tab');
+            const topperCards = document.querySelectorAll('.topper-card');
+
+            let activeYear = '2025';
+            let activeCategory = 'all';
+
+            const applyFilters = () => {
+                topperCards.forEach(card => {
+                    const cardYear = card.getAttribute('data-year');
+                    const cardCategory = card.getAttribute('data-cat');
+
+                    const matchesYear = (cardYear === activeYear);
+                    const matchesCategory = (activeCategory === 'all' || cardCategory === activeCategory);
+
+                    if (matchesYear && matchesCategory) {
+                        card.classList.remove('hidden');
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            };
+
+            // Year selection handler
+            yearBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    yearBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeYear = btn.getAttribute('data-year');
+                    applyFilters();
+                });
+            });
+
+            // Category selection handler
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    activeCategory = tab.getAttribute('data-filter');
+                    applyFilters();
+                });
+            });
+
+            // Run initial filter application
+            applyFilters();
+        });
+    </script>
+</body>
+</html>

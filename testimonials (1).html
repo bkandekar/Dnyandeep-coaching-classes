@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Verified Parent & Student Testimonials | Dnyandeep Coaching Classes</title>
+    <meta name="title" content="Verified Parent & Student Testimonials | Dnyandeep Coaching Classes">
+    <meta name="description" content="Discover verified feedback from parents and students in Savarde, Kolhapur. Read about their experiences with Dnyandeep Coaching Classes.">
+    <meta name="keywords" content="Coaching classes reviews Savarde, student feedback Kolhapur, parent reviews Hatkanangale, Dnyandeep coaching recommendations">
+    <meta name="author" content="Dnyandeep Coaching Classes">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dnyandeepclasses.com/testimonials.html">
+    <meta property="og:title" content="Student Reviews & Testimonials | Dnyandeep Coaching Classes">
+    <meta property="og:description" content="Read real success stories and parent feedback about the teaching excellence and discipline at Dnyandeep Coaching Classes, Savarde.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dnyandeepclasses.com/testimonials.html">
+    <meta property="twitter:title" content="Reviews Board | Dnyandeep Coaching Classes">
+    <meta property="twitter:description" content="Unbiased, verified feedback from local families. Join Savarde's premium academy.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop">
+
+    <!-- Fonts and Icons CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        /* Testimonials Custom Carousel & Grid Styling */
+        .featured-slider-section {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        .featured-slider-section .section-title,
+        .featured-slider-section .section-subtitle {
+            color: var(--bg-white);
+        }
+        .featured-slider-section .section-title span {
+            color: var(--accent-color);
+        }
+        .slider-outer-container {
+            max-width: 850px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+        .slider-viewport {
+            overflow: hidden;
+            position: relative;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 50px;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .slide-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .slide-item.active {
+            opacity: 1;
+        }
+        .slide-rating {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .slide-quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.7;
+            text-align: center;
+            color: #E2E8F0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .slide-quote::before {
+            content: "“";
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: -30px;
+            left: -20px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        .slide-reviewer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .slide-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2.5px solid var(--accent-color);
+        }
+        .slide-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-meta h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--bg-white);
+            margin-bottom: 4px;
+        }
+        .slide-meta p {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Slider Controls */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--bg-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 10;
+        }
+        .slider-arrow:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
+        }
+        .arrow-prev {
+            left: -70px;
+        }
+        .arrow-next {
+            right: -70px;
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .slider-dot.active {
+            background-color: var(--accent-color);
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        /* Testimonial Grid section override */
+        .testimonials-grid-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+        .testimonials-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card-item {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(10,38,71,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .testimonial-card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+        .testimonial-rating {
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .testimonial-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+        .testimonial-reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-top: 1px solid var(--bg-offset);
+            padding-top: 16px;
+        }
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+        }
+        .reviewer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .reviewer-meta h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .reviewer-meta p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .arrow-prev {
+                left: 10px;
+            }
+            .arrow-next {
+                right: 10px;
+            }
+            .slider-viewport {
+                padding: 40px 60px;
+            }
+        }
+        @media (max-width: 992px) {
+            .testimonials-grid-full {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .testimonials-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .slider-viewport {
+                padding: 30px;
+            }
+            .slider-arrow {
+                display: none; /* Hide arrows on mobile for swipe/dots */
+            }
+            .slide-quote {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" aria-hidden="true">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Announcement Bar / Dismissible Banner -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container announcement-container">
+            <div class="announcement-info">
+                <span><i class="fa-solid fa-phone"></i> Admissions Open 2026-27</span>
+                <span><i class="fa-solid fa-location-dot"></i> Savarde, Hatkanangale, Kolhapur</span>
+            </div>
+            <div class="announcement-banner">
+                <i class="fa-solid fa-bullhorn"></i> New Batches Starting This Week!
+            </div>
+            <div class="announcement-close" id="closeAnnouncement" aria-label="Dismiss banner">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper" aria-label="Dnyandeep Coaching Home">
+                <div class="logo-icon" aria-hidden="true">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Dnyandeep</h1>
+                    <p>Coaching Classes</p>
+                </div>
+            </a>
+            
+            <nav id="navMenu" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="faculty.html" class="nav-link">Faculty</a>
+                <a href="results.html" class="nav-link">Results</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="testimonials.html" class="nav-link active">Testimonials</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Header -->
+    <section class="page-header" aria-labelledby="reviews-heading">
+        <div class="container">
+            <h1 id="reviews-heading">Parent & Student Reviews</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Testimonials</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. Featured Spotlight Carousel Section -->
+    <section class="featured-slider-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" style="background-color: rgba(255,255,255,0.1); color: var(--accent-color);">Spotlights</span>
+                <h2 class="section-title">Featured <span>Success Carousel</span></h2>
+                <p class="section-subtitle">Real reflections of academic transformations and top-tier selection experiences shared by local families.</p>
+            </div>
+
+            <!-- Carousel Box -->
+            <div class="slider-outer-container reveal">
+                <button class="slider-arrow arrow-prev" id="slidePrev" aria-label="Previous slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                
+                <div class="slider-viewport">
+                    <div class="slider-track" id="slideTrack">
+                        
+                        <!-- Slide 1 -->
+                        <div class="slide-item active">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">"Before joining Dnyandeep, I used to struggle with science conceptual questions. Dr. Deshmukh's interactive diagrams and weekly mocks made biology so easy. I secured 96.8% in boards."</p>
+                            <div class="slide-reviewer">
+                                <div class="slide-avatar">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Priya Shinde">
+                                </div>
+                                <div class="slide-meta">
+                                    <h4>Priya Shinde</h4>
+                                    <p>SSC Board Topper - 96.8% (2025)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="slide-item">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">"We are extremely happy with Patil Sir's personalized updates. He calls parents immediately if homework or tests are missed. The discipline here is outstanding, reflecting in my daughter's score."</p>
+                            <div class="slide-reviewer">
+                                <div class="slide-avatar">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop" alt="Sunita Patil">
+                                </div>
+                                <div class="slide-meta">
+                                    <h4>Sunita Patil</h4>
+                                    <p>Parent (Sneha Patil's Mother)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="slide-item">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">"The reasoning and maths short-cut sheets provided in the Banking batch are phenomenal. Shinde Sir's logic tricks saved me crucial minutes in IBPS exam. Selected PO on first try!"</p>
+                            <div class="slide-reviewer">
+                                <div class="slide-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Pranav Mane">
+                                </div>
+                                <div class="slide-meta">
+                                    <h4>Pranav Mane</h4>
+                                    <p>SBI PO Selection (2025)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="slide-item">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">"Dnyandeep has the finest study desk library (Abhyasika) in Savarde. It provides a fully quiet space which helped me study focusedly for 8 hours daily without any home distraction."</p>
+                            <div class="slide-reviewer">
+                                <div class="slide-avatar">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" alt="Aditya Kore">
+                                </div>
+                                <div class="slide-meta">
+                                    <h4>Aditya Kore</h4>
+                                    <p>Excise Inspector - SSC CGL (2025)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button class="slider-arrow arrow-next" id="slideNext" aria-label="Next slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <!-- Circle Dot indicators -->
+                <div class="slider-dots" id="slideDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Detailed Grid Board Section -->
+    <section class="testimonials-grid-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Word of Mouth</span>
+                <h2 class="section-title">Verified <span>Success Stories</span></h2>
+                <p class="section-subtitle">We build mutual trust between teachers, students, and parents. Discover what makes us Savarde's premium coaching institute.</p>
+            </div>
+
+            <!-- Complete 9 Testimonial Cards Grid -->
+            <div class="testimonials-grid-full">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Before joining Dnyandeep, I used to struggle with science conceptual questions. Dr. Deshmukh's interactive diagrams and weekly mocks made biology so easy. I secured 96.8% in boards."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Priya Shinde">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Priya Shinde</h5>
+                            <p>SSC Topper - 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"We are extremely happy with Patil Sir's personalized updates. He calls parents immediately if homework or tests are missed. The discipline here is outstanding, reflecting in my daughter's score."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop" alt="Sunita Patil">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Sunita Patil</h5>
+                            <p>Parent (Sneha's Mother)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The reasoning and maths short-cut sheets provided in the Banking batch are phenomenal. Shinde Sir's logic tricks saved me crucial minutes in IBPS exam. Selected PO on first try!"</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Pranav Mane">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Pranav Mane</h5>
+                            <p>SBI PO Selection - 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Dnyandeep has the finest study desk library (Abhyasika) in Savarde. It provides a fully quiet space which helped me study focusedly for 8 hours daily without any home distraction."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" alt="Aditya Kore">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Aditya Kore</h5>
+                            <p>Excise Inspector - SSC CGL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The NEET foundation classes built my basic chemistry extremely strong. I highly recommend junior high schoolers to join their 2-year foundation programs for pre-medical targets."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" alt="Megha Shinde">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Megha Shinde</h5>
+                            <p>NEET Aspirant</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Extremely pocket-friendly coaching fees considering the premium class infrastructure, printed study cards, and mock test servers. Sincere thanks to the entire faculty group."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" alt="Suresh Kamble">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Suresh Kamble</h5>
+                            <p>Parent (Sayali's Father)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 7 (Parent) -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Our son has shown remarkable improvement in mathematics problem-solving speed within 3 months of joining Patil Sir's foundation class. Sincere gratitude for your focus on rural students."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=150&auto=format&fit=crop" alt="Swati Deshmukh">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Swati Deshmukh</h5>
+                            <p>Parent (Nilesh's Mother)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 8 (Student) -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The weekly Sunday test schedules and individual micro-feedback on my mock papers removed my fear of board questions. Dr. Deshmukh cleared my biology doubts patiently."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=150&auto=format&fit=crop" alt="Rohit Patil">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Rohit Patil</h5>
+                            <p>SSC Board Scholar - 96.8%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 9 (Student - Banking selection) -->
+                <div class="testimonial-card-item reveal">
+                    <div>
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The well-stocked reference library and quiet desk rooms here are unmatched in Kolhapur district. Being able to study focusedly for 10 hours daily amidst serious candidates was key."</p>
+                    </div>
+                    <div class="testimonial-reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=150&auto=format&fit=crop" alt="Nilesh Kamble">
+                        </div>
+                        <div class="reviewer-meta">
+                            <h5>Nilesh Kamble</h5>
+                            <p>Selected IBPS PO - 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-wrapper" style="margin-bottom: 20px;">
+                    <div class="logo-icon" style="background-color: var(--accent-color); color: var(--primary-color);">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text" style="color: white;">
+                        <h1 style="color: white;">Dnyandeep</h1>
+                        <p style="color: #94A3B8;">Coaching Classes</p>
+                    </div>
+                </a>
+                <p>Establishing landmarks in conceptual education since 12+ years. We offer strategic school board mentoring, foundation courses, and elite government competitive exam frameworks in Savarde, Kolhapur.</p>
+                <div class="footer-socials">
+                    <a href="https://wa.me/918329931123" target="_blank" class="footer-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                    <li><a href="faculty.html">Meet Faculty</a></li>
+                    <li><a href="results.html">Toppers Board</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Major Courses</h4>
+                <ul class="footer-links">
+                    <li><a href="courses.html">Class 10 Foundation</a></li>
+                    <li><a href="courses.html">SSC CGL / CHSL Prep</a></li>
+                    <li><a href="courses.html">Banking & IBPS Exams</a></li>
+                    <li><a href="courses.html">NEET Foundation Course</a></li>
+                    <li><a href="courses.html">JEE Foundation Course</a></li>
+                    <li><a href="courses.html">Class 8-9 School Edge</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Contact Us</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Near Laxmi Biroba Mandir, Savarde, Tal. Hatkanangale, Dist. Kolhapur, Pincode 416109, Maharashtra</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 83299 31123</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>info@dnyandeepclasses.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dnyandeep Coaching Classes. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="faq.html">FAQ Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Sticky Actions -->
+    <div class="floating-actions" aria-label="Floating contact buttons">
+        <a href="https://wa.me/918329931123?text=Hi,%20I%20want%20to%20know%20more%20about%20admission%20at%20Dnyandeep%20Coaching%20Classes" target="_blank" class="float-btn float-whatsapp" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918329931123" class="float-btn float-call" aria-label="Call Institute">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <button class="float-btn float-totop" id="btnToTop" aria-label="Scroll back to top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Specific Testimonial Slider JS Code -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('slideTrack');
+            const slides = Array.from(track.children);
+            const prevBtn = document.getElementById('slidePrev');
+            const nextBtn = document.getElementById('slideNext');
+            const dotsContainer = document.getElementById('slideDots');
+
+            let currentIndex = 0;
+            let autoRotateTimer;
+
+            // 1. Generate dot indicators dynamically
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.classList.add('slider-dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.setAttribute('aria-label', `Navigate to slide ${idx + 1}`);
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsContainer.children);
+
+            // 2. Navigation Function
+            const goToSlide = (index) => {
+                // Bounds loop-around
+                if (index < 0) {
+                    index = slides.length - 1;
+                } else if (index >= slides.length) {
+                    index = 0;
+                }
+
+                currentIndex = index;
+
+                // Move slide track
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // Update active classes on items
+                slides.forEach((slide, sIdx) => {
+                    if (sIdx === currentIndex) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                // Update dots active state
+                dots.forEach((dot, dIdx) => {
+                    if (dIdx === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+
+                // Reset timer whenever user interacts manually
+                resetAutoRotate();
+            };
+
+            // 3. Autoplay Setup
+            const startAutoRotate = () => {
+                autoRotateTimer = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 5000); // Rotates every 5 seconds
+            };
+
+            const resetAutoRotate = () => {
+                clearInterval(autoRotateTimer);
+                startAutoRotate();
+            };
+
+            // 4. Manual Arrow and Dot click listeners
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(idx);
+                });
+            });
+
+            // Start Autoplay immediately
+            startAutoRotate();
+        });
+    </script>
+</body>
+</html>

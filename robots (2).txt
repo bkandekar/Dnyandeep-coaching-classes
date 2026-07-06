@@ -1,0 +1,6 @@
+# Robots.txt for Dnyandeep Coaching Classes Website
+User-agent: *
+Allow: /
+
+# Sitemap Location Link
+Sitemap: https://dnyandeepclasses.com/sitemap.xml
